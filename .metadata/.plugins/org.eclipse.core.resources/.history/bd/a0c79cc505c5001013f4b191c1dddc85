@@ -1,0 +1,23 @@
+package com.example.triggerwatch.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.triggerwatch.service.SubmissionService;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "*")
+public class SubmissionController 
+{
+	private final SubmissionService submmissionService;
+
+	public SubmissionController(SubmissionService submmissionService) 
+	{
+		super();
+		this.submmissionService = submmissionService;
+	}
+	
+	
+}

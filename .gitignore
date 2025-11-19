@@ -1,0 +1,14 @@
+# backend
+backend/target/
+backend/.classpath
+backend/.project
+backend/.settings/
+
+# frontend
+frontend/node_modules/
+frontend/dist/
+
+# IDE artifacts
+.idea/
+.vscode/
+.DS_Store

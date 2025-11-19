@@ -1,0 +1,9 @@
+package com.example.triggerwatch.dto;
+
+public class SubmitRequest {
+
+	public SubmitRequest() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

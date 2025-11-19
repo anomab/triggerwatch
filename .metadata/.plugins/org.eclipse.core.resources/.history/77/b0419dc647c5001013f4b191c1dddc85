@@ -1,0 +1,27 @@
+package com.example.triggerwatch.service;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class SubmissionService 
+{
+	private final Set<String> triggerWords = new HashSet<>
+	(Arrays.asList("bomb", "blast", "virus", "attack"));
+	
+	public String checkForTriggers(String fullName, String textBody)
+	{
+		String lowerName = fullName.toLowerCase();
+		String lowerText = textBody.toLowerCase();
+		
+		for (String word : triggerWords)
+		{
+			String lowerWord = word.toLowerCase();
+		}
+		
+		
+	}
+}
