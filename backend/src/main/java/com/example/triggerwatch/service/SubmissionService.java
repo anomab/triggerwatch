@@ -4,11 +4,15 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SubmissionService 
 {
+	@Autowired
+	private EmailService emailService;
+	
 	private final Set<String> triggerWords = new HashSet<>
 	(Arrays.asList("bomb", "blast", "virus", "attack"));
 	
@@ -17,7 +21,7 @@ public class SubmissionService
 		String lowerName = fullName.toLowerCase();
 		String lowerText = textBody.toLowerCase();
 		
-		// The following logic only identifies the first instanc of a trigger word
+		// The following logic only identifies the first instance of a trigger word
 		// stops execution
 		
 		/*
@@ -58,7 +62,7 @@ public class SubmissionService
 			return "No trigger words found.";
 		}
 		
-		
+		emailService.sendTriggerAlert(foundWords.toString(), fullName);
 		return "Trigger words found: " +foundWords;
 	}
 }
