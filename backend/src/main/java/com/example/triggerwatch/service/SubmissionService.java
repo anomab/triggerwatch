@@ -28,38 +28,28 @@ public class SubmissionService
 				.trim();
 	}
 	
-	
+	private Set<String> tokenize(String input)
+	{
+		if (input==null || input.isEmpty())
+			return Set.of();
+		
+		return new HashSet<>(Arrays.asList(input.split(" ")));
+	}
 	
 	public String checkForTriggers(String fullName, String textBody)
 	{
 		String normalizedName = normalize(fullName);
 		String normalizedText = normalize(textBody);
 		
-		// The following logic only identifies the first instance of a trigger word
-		// stops execution
-		
-		/*
-		for (String word : triggerWords)
-		{
-			String lowerWord = word.toLowerCase();
-			
-			if (lowerName.contains(word) || lowerText.contains(word))
-			{
-				return "Trigger word found: " + word;
-			}
-		}
-		
-		return "No trigger word found";
-		*/
+		Set<String> nameTokens = tokenize(normalizedName);
+		Set<String> textTokens = tokenize(normalizedText);
 		
 		StringBuilder foundWords = new StringBuilder();
 		
 		for (String word : triggerWords)
-		{
-			String lowerWord = word.toLowerCase();
-			
-			boolean foundInName = normalizedName.contains(lowerWord);
-			boolean foundInText = normalizedText.contains(lowerWord);
+		{	
+			boolean foundInName = nameTokens.contains(word);
+			boolean foundInText = textTokens.contains(word);
 			
 			if (foundInName || foundInText)
 			{
