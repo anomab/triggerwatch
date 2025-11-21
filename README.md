@@ -5,4 +5,5 @@
 - Backend checks for trigger words using contains()
 - Collects ALL trigger words
 - No database yet
-- No email yet
+- Email sent when triggerwords are found
+- Added data pre-processing

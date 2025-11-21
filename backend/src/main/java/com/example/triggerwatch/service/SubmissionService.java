@@ -16,10 +16,24 @@ public class SubmissionService
 	private final Set<String> triggerWords = new HashSet<>
 	(Arrays.asList("bomb", "blast", "virus", "attack"));
 	
+	private String normalize(String input)
+	{
+		if (input == null)
+			return "";
+		
+		return input
+				.toLowerCase()
+				.replaceAll("[^a-z\\s]", "")
+				.replaceAll("\\s+", " ")
+				.trim();
+	}
+	
+	
+	
 	public String checkForTriggers(String fullName, String textBody)
 	{
-		String lowerName = fullName.toLowerCase();
-		String lowerText = textBody.toLowerCase();
+		String normalizedName = normalize(fullName);
+		String normalizedText = normalize(textBody);
 		
 		// The following logic only identifies the first instance of a trigger word
 		// stops execution
@@ -44,8 +58,8 @@ public class SubmissionService
 		{
 			String lowerWord = word.toLowerCase();
 			
-			boolean foundInName = lowerName.contains(lowerWord);
-			boolean foundInText = lowerText.contains(lowerWord);
+			boolean foundInName = normalizedName.contains(lowerWord);
+			boolean foundInText = normalizedText.contains(lowerWord);
 			
 			if (foundInName || foundInText)
 			{
