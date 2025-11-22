@@ -8,3 +8,4 @@
 - No database yet
 - Email sent when triggerwords are found
 - Added data pre-processing
+- Using regex, Pattern and Matcher classes to search words
